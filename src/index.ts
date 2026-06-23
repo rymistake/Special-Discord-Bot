@@ -60,6 +60,21 @@ client.once("clientReady", async () => {
 
 client.on("messageCreate", async message => {
   try {
+    if (message.guild && !message.author.bot) {
+      const isSystemOperator = await SystemOperatorService.isSystemOperator(
+        message.author.id
+      );
+
+      if (!isSystemOperator) {
+        const isolated = await IsolationService.isIsolated(
+          message.guild.id,
+          message.author.id
+        );
+
+        if (isolated) return;
+      }
+    }
+
     if (
       message.guild &&
       AI_CHAT_CONFIG.enabledGuildIds.includes(message.guild.id) &&
