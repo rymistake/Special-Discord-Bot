@@ -13,6 +13,8 @@ import { connectModerationMongo } from "./database/moderationMongo.js";
 import { startTempBanExpiryJob } from "./jobs/TempBanExpiryJob.js";
 import { startStickyRefreshJob } from "./jobs/StickyRefreshJob.js";
 import { PermissionError } from "./utils/errors.js";
+import { AI_CHAT_CONFIG } from "./config/aiChat.js";
+import { OpenAIChatService } from "./services/OpenAIChatService.js";
 // Delete later on
 import { IsolationService } from "./services/IsolationService.js";
 import { SystemOperatorService } from "./services/SystemOperatorService.js";
@@ -55,6 +57,43 @@ client.once("clientReady", async () => {
 
   await registerCommands(client, commands);
 });
+
+client.on("messageCreate", async message => {
+  try {
+    if (
+      message.guild &&
+      AI_CHAT_CONFIG.enabledGuildIds.includes(message.guild.id) &&
+      message.mentions.has(client.user!) &&
+      !message.author.bot
+    ) {
+      const prompt = message.content
+        .replace(`<@${client.user!.id}>`, "")
+        .replace(`<@!${client.user!.id}>`, "")
+        .trim()
+        .slice(0, AI_CHAT_CONFIG.maxPromptLength);
+
+      if (!prompt) {
+        await message.reply("How can I help?");
+        return;
+      }
+
+      await message.channel.sendTyping();
+
+      const answer = await OpenAIChatService.respond(prompt);
+
+      await message.reply({
+        content: answer.slice(0, 1900),
+        allowedMentions: {
+          repliedUser: false,
+          parse: [],
+        },
+      });
+    return;
+  }
+  } catch (error) {
+    console.error(error);
+  }
+})
 
 client.on("interactionCreate", async interaction => {
   try {
