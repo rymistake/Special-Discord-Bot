@@ -94,7 +94,13 @@ client.on("messageCreate", async message => {
 
       await message.channel.sendTyping();
 
-      const answer = await OpenAIChatService.respond(prompt);
+      const context = await AIContextService.getChannelContext(message);
+
+      const answer = await OpenAIChatService.respond({
+        prompt,
+        context,
+        userID: message.author.id,
+      });
 
       await message.reply({
         content: answer.slice(0, 1900),
