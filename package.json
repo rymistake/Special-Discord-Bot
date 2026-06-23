@@ -1,0 +1,29 @@
+{
+  "name": "iris-dev",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "axios": "^1.13.4",
+    "discord.js": "^14.26.4",
+    "dotenv": "^16.6.1",
+    "express": "^5.2.1",
+    "image-hash": "^7.0.1",
+    "mongodb": "^6.21.0",
+    "mongoose": "^9.6.2",
+    "sharp": "^0.34.5",
+    "tesseract.js": "^7.0.0",
+    "uuid": "^13.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^20.19.41",
+    "tsx": "^4.22.3",
+    "typescript": "^5.9.3"
+  }
+}

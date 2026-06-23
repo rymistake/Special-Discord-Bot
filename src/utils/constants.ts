@@ -1,0 +1,31 @@
+export const BOT_NAME = "IRiS";
+
+export const COLORS = {
+  SUCCESS: 0x57f287,
+  ERROR: 0xed4245,
+  WARNING: 0xfee75c,
+  INFO: 0x5865f2,
+  TICKET_PANELS: 0x0f0f0f,
+  DEFAULT: 0x2b2d31,
+};
+
+export const LIMITS = {
+  VERIFICATION_SESSION_MINUTES: 15,
+  MAX_PURGE_AMOUNT: 100,
+  ROLE_UPDATE_BATCH_SIZE: 5,
+  ROLE_UPDATE_DELAY_MS: 1000,
+};
+
+export const EMOJIS = {
+  SUCCESS: "✅",
+  WARNING: "⚠️",
+  ERROR: "❌",
+};
+
+export const DC_EMOJI = {
+  WOLVES: "<:wolves:1513485585946247168>",
+  CURATORIUM: "<:curatorium:1513485553582997504>",
+  CONCORDAT: "<:concordat:1513485507881992202>",
+  IRIS_MAIN: "<:irisFull:1513485442375487488>",
+  IRIS_TRANSPARENT: "<:irisTransparent:1513485371378503750>",
+};
