@@ -36,7 +36,7 @@ export class OpenAIChatService {
         messages: [
           {
             role: "system",
-            content: SYSTEM_PROMPT + "\n\nLong-term memories:\n" + memory + "\n\nKnown notable people:\n" + notablePeople + "\n\nSpeaker context:\n" + (personContext ?? "No special information about this speaker."),
+            content: SYSTEM_PROMPT + "\n\nLong-term memories:\n" + memory + "\n\nPeople you know:\n" + notablePeople + "\n\nThe person you are speaking to:\n" + (personContext ?? "No special information about this speaker."),
           },
           {
             role: "user",
