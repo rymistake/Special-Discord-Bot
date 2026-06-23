@@ -7,7 +7,7 @@ const openai = new OpenAI({
 export class OpenAIChatService {
   static async respond(prompt: string) {
     const response = await openai.responses.create({
-      model: "gpt-5.5-mini",
+      model: "gpt-4.1-mini",
       input: [
         {
           role: "system",
