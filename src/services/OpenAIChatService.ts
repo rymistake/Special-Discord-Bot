@@ -1,18 +1,26 @@
 import OpenAI from "openai";
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+const openrouter = new OpenAI({
+  apiKey: process.env.OPENROUTER_API_KEY,
+  baseURL: "https://openrouter.ai/api/v1",
 });
 
 export class OpenAIChatService {
   static async respond(prompt: string) {
-    const response = await openai.responses.create({
-      model: "gpt-4.1-mini",
-      input: [
+    if (!process.env.OPENROUTER_API_KEY) {
+      throw new Error("OPENROUTER_API_KEY is not configured.");
+    }
+
+    const response = await openrouter.chat.completions.create({
+      model:
+        process.env.OPENROUTER_MODEL ??
+        "meta-llama/llama-3.1-70b-instruct",
+
+      messages: [
         {
           role: "system",
           content:
-            "You are IRiS, a helpful Discord assistant for an SCP-style Roblox community. Keep replies concise, useful, and in-character but not overly roleplay-heavy.",
+            "You are IRiS, a helpful Discord assistant for an SCP-style Roblox community. Keep replies concise, useful, and in-character but not overly roleplay-heavy. Do not invent community policy.",
         },
         {
           role: "user",
@@ -21,6 +29,6 @@ export class OpenAIChatService {
       ],
     });
 
-    return response.output_text;
+    return response.choices[0]?.message?.content ?? "I could not generate a response.";
   }
 }
