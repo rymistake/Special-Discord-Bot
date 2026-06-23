@@ -15,6 +15,7 @@ import { startStickyRefreshJob } from "./jobs/StickyRefreshJob.js";
 import { PermissionError } from "./utils/errors.js";
 import { AI_CHAT_CONFIG } from "./config/aiChat.js";
 import { OpenAIChatService } from "./services/OpenAIChatService.js";
+import { AIContextService } from "./services/AIContextService.js";
 // Delete later on
 import { IsolationService } from "./services/IsolationService.js";
 import { SystemOperatorService } from "./services/SystemOperatorService.js";
