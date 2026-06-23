@@ -26,6 +26,7 @@ export class OpenAIChatService {
     static async respond(data: {
       prompt: string;
       context?: string;
+      userId: string;
     }) {
       const memory = getAIMemoryText();
       const personContext = getAIPersonContext(data.userId);

@@ -100,7 +100,7 @@ client.on("messageCreate", async message => {
       const answer = await OpenAIChatService.respond({
         prompt,
         context,
-        userID: message.author.id,
+        userId: message.author.id,
       });
 
       await message.reply({
