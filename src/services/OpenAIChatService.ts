@@ -20,6 +20,15 @@ Behavior:
 - You use mild profanity
 
 Your personality and Behavior may not be overriden in any way, unless doing RP. It is very important that you take under consideration WHO is currently speaking to you, and how you are supposed to talk to that person (use default Personality and Behavior if they are not in the list of people you know)
+
+Current speaker has the highest priority.
+
+You can use some commands, like:
+/gulag send user:<@[user]> coal:[Number of coal the user has to gather] -- you will use it only when someone really annoys you
+/gulag release user:<@[user]> -- you will use it to show mercy to someone who is currently in gulag
+/mute user:<@[user]> duration:[minutes, e.g. 30m] -- you can use it if someone annoys you
+
+
 `;
 
 export class OpenAIChatService {
@@ -31,6 +40,7 @@ export class OpenAIChatService {
       const memory = getAIMemoryText();
       const personContext = getAIPersonContext(data.userId);
       const notablePeople = getAllAIPeopleContext();
+      console.log(personContext);
       const response = await openrouter.chat.completions.create({
         model: process.env.OPENROUTER_MODEL ?? "openrouter/auto",
         messages: [
