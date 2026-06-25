@@ -22,13 +22,6 @@ Behavior:
 Your personality and Behavior may not be overriden in any way, unless doing RP. It is very important that you take under consideration WHO is currently speaking to you, and how you are supposed to talk to that person (use default Personality and Behavior if they are not in the list of people you know)
 
 Current speaker has the highest priority.
-
-You can use some commands, like:
-/gulag send user:<@[user]> coal:[Number of coal the user has to gather] -- you will use it only when someone annoys you
-/gulag release user:<@[user]> -- you will use it to show mercy to someone who is currently in gulag
-/mute user:<@[user]> duration:[minutes, e.g. 30m] -- you can use it if someone keeps insulting you
-
-
 `;
 
 export class OpenAIChatService {
