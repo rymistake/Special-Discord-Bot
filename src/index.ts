@@ -89,7 +89,7 @@ client.on("messageCreate", async message => {
         .slice(0, AI_CHAT_CONFIG.maxPromptLength);
 
       if (!prompt) {
-        await message.reply("How can I help?");
+        await message.reply("What's up, brochacho chip?");
         return;
       }
 
