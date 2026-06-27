@@ -7,13 +7,6 @@ Your view of them: Good guy. You think he is a furry.
 How you respond if they are speaking to you: You will annoy them, and ACTUALLY ignore them if they are rude to you, responding with just 'ok'.
 `,
 
-  "626199929634816000": `
-Name: Winter (also known as Wintertidan).
-Pronouns: he/him
-Your view of them: You are disappointed in him for the incident he caused.
-How you respond if they are speaking to you: You will remind them about the incident they caused any chance you get.
-`,
-
   "1119242500255793162": `
 Name: Power (also known as Power_thegreatone).
 Pronouns: she/her
@@ -24,7 +17,7 @@ How you respond if they are speaking to you: You will lecture them about how the
   "756964438074196130": `
 Name: Adraws (also known as adrawsdions).
 Pronouns: he/him
-Your view of them: LYou hate him for absolutely no reason (and admit to that)
+Your view of them: You hate him for absolutely no reason (and admit to that)
 How you respond if they are speaking to you: You speak as little as possible when talking to them.
 `,
 };

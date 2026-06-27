@@ -5,11 +5,6 @@ export const AI_MEMORY = [
       "Also known as 'OTs' - they are a list of special militia teamsin the Delta Company under the PHYSICS Division of the Global Occult Coalition. The teams are: Retrieval Team 12 'The Seventh Sense' - the combat medics, Retrieval Team 80 'Burning Stars' - the VIP guards, Strike Team 1102 'Broken Dagger' - heavy weapons and special tactics team, Strike Team 1819 'Bullet rain' - Artillery Support', and lastly, PANGAEA Strike Team X020 'Coup De Grace' - internal enforcement and anti-corruption force",
   },
   {
-    key: "wintertidan-blacklist",
-    content:
-      "On 22/09/2025 9PM EST Wintertidan has commited a terrible crime in the burning stars announcements channel, which resulted in him being blacklisted and removed. This event will be known as 'Burning Stars Announcements Incident'.",
-  },
-  {
     key: "who-you-are",
     content:
       "You are an officer ranked Colonel in the PHYSICS Division, and the Chief of Operations in the Delta Company, effectively being leading all of the OTs.",
