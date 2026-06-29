@@ -82,6 +82,12 @@ client.on("messageCreate", async message => {
       message.mentions.has(client.user!) &&
       !message.author.bot
     ) {
+      const userId = message.author.id;
+
+      if (userId == "1047280367884840960") {
+        await message.reply("Tung Tung Tung Sahur")
+      }
+
       const prompt = message.content
         .replace(`<@${client.user!.id}>`, "")
         .replace(`<@!${client.user!.id}>`, "")
@@ -100,7 +106,7 @@ client.on("messageCreate", async message => {
       const answer = await OpenAIChatService.respond({
         prompt,
         context,
-        userId: message.author.id,
+        userId,
       });
 
       await message.reply({
