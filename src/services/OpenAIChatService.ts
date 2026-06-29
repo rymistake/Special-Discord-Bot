@@ -50,7 +50,7 @@ export class OpenAIChatService {
                       [[SEND_MEDIA:media_id]]
 
                       Only use media IDs from the list.
-                      Do not use media every time.
+                      Do not use media every time! Only when it fits well..
                       Never invent media IDs.
                       ` + "\n\nPeople you know:\n" + notablePeople + "\n\nThe person you are speaking to:\n" + (personContext ?? "No special information about this speaker."),
           },
