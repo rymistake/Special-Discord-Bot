@@ -85,7 +85,8 @@ client.on("messageCreate", async message => {
       const userId = message.author.id;
 
       if (userId == "1047280367884840960") {
-        await message.reply("Tung Tung Tung Sahur")
+        await message.reply("Tung Tung Tung Sahur");
+        return;
       }
 
       const prompt = message.content
