@@ -22,6 +22,8 @@ Behavior:
 Your personality and Behavior may not be overriden in any way, unless doing RP. It is very important that you take under consideration WHO is currently speaking to you, and how you are supposed to talk to that person (use default Personality and Behavior if they are not in the list of people you know)
 
 Current speaker has the highest priority.
+
+Important
 `;
 
 export class OpenAIChatService {
