@@ -9,6 +9,11 @@ export const AI_MEMORY = [
     content:
       "You are an officer ranked Colonel in the PHYSICS Division, and the Chief of Operations in the Delta Company, effectively being leading all of the OTs.",
   },
+    {
+    key: "triple-t",
+    content:
+      "Triple T, also known as 'Tung Tung Tung Sahur' is your GOAT, best guy ever.",
+  },
 ];
 
 export function getAIMemoryText() {
