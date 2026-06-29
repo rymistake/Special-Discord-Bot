@@ -4,7 +4,7 @@ import {
   Collection,
   Partials
 } from "discord.js";
-
+import path from "path";
 import dotenv from "dotenv";
 import { loadCommands } from "./utils/loadCommands.js";
 import { registerCommands } from "./utils/registerCommands.js";
@@ -16,6 +16,7 @@ import { PermissionError } from "./utils/errors.js";
 import { AI_CHAT_CONFIG } from "./config/aiChat.js";
 import { OpenAIChatService } from "./services/OpenAIChatService.js";
 import { AIContextService } from "./services/AIContextService.js";
+import { getAIMediaById } from "./config/aiMedia.js";
 // Delete later on
 import { IsolationService } from "./services/IsolationService.js";
 import { SystemOperatorService } from "./services/SystemOperatorService.js";
@@ -110,8 +111,19 @@ client.on("messageCreate", async message => {
         userId,
       });
 
+      const mediaMatch = answer.match(/\[\[SEND_MEDIA:([a-zA-Z0-9_-]+)\]\]/);
+
+      const mediaId = mediaMatch?.[1] ?? null;
+
+      const cleanedAnswer = answer
+        .replace(/\[\[SEND_MEDIA:[a-zA-Z0-9_-]+\]\]/g, "")
+        .trim();
+
+      const media = mediaId ? getAIMediaById(mediaId) : null;
+
       await message.reply({
-        content: answer.slice(0, 1900),
+        content: cleanedAnswer.slice(0, 1900) || undefined,
+        files: media ? [path.resolve(media.filePath)] : [],
         allowedMentions: {
           repliedUser: false,
           parse: [],

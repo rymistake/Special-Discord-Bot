@@ -1,6 +1,7 @@
 import OpenAI from "openai";
 import { getAIMemoryText } from "../config/aiMemory.js";
 import { getAIPersonContext, getAllAIPeopleContext } from "../config/aiPeople.js";
+import { getAIMediaListText } from "../config/aiMedia.js";
 
 const openrouter = new OpenAI({
   apiKey: process.env.OPENROUTER_API_KEY,
@@ -35,13 +36,23 @@ export class OpenAIChatService {
       const memory = getAIMemoryText();
       const personContext = getAIPersonContext(data.userId);
       const notablePeople = getAllAIPeopleContext();
+      const mediaList = getAIMediaListText();
+
       console.log(personContext);
       const response = await openrouter.chat.completions.create({
         model: process.env.OPENROUTER_MODEL ?? "openrouter/auto",
         messages: [
           {
             role: "system",
-            content: SYSTEM_PROMPT + "\n\nLong-term memories:\n" + memory + "\n\nPeople you know:\n" + notablePeople + "\n\nThe person you are speaking to:\n" + (personContext ?? "No special information about this speaker."),
+            content: SYSTEM_PROMPT + "\n\nLong-term memories:\n" + memory + "\n\nAvailable media files to use:\n"+ mediaList + "\n\nAvailable media files:\n" + mediaList +
+                      `
+                      If a media file would fit your response, put this marker at the VERY END of your response:
+                      [[SEND_MEDIA:media_id]]
+
+                      Only use media IDs from the list.
+                      Do not use media every time.
+                      Never invent media IDs.
+                      ` + "\n\nPeople you know:\n" + notablePeople + "\n\nThe person you are speaking to:\n" + (personContext ?? "No special information about this speaker."),
           },
           {
             role: "user",
